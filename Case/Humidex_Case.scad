@@ -40,10 +40,10 @@ LCD_board_hole_diameter = 2.5;
 LCD_board_hole_2edge	= 2.5;
 
 LCD_display_length		= 71.2;
-LCD_display_width		= 25.2;
+LCD_display_width		= 23.8;
 LCD_display_height		= 8.6;
-LCD_display_x_pos		= 4.95;
-LCD_display_y_pos		= 5.7;
+LCD_display_x_pos		= 4.6;
+LCD_display_y_pos		= 5.6;
 
 
 case_width 				= max(batt_Width, case_cutout_width)+case_thickness*2;
@@ -76,7 +76,7 @@ difference(){
 module LCD_display(){
 	translate([
 		LCD_display_x_pos, 
-		LCD_board_width - LCD_display_y_pos - LCD_display_width, 
+		LCD_display_y_pos, 
 		LCD_board_height])
 		cube ([LCD_display_length, LCD_display_width, LCD_display_height]);
 }

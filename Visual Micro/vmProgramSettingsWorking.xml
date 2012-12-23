@@ -1,0 +1,8 @@
+<VisualMicro>
+  <Program Name="Humidex" Ext=".pde" Location="C:\Users\Blair\Documents\Arduino\Humidex" IncludeDebugInformation="0">
+    <Compile IsCompiled="0" CompilerErrors="0" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\Blair\AppData\Local\VMicro\Arduino\Builds\Humidex\uno" />
+    <Platform Name="Arduino">
+      <Board Name="uno" Description="Arduino Uno" CoreFolder="C:\arduino-1.0\hardware\arduino\cores\arduino" VariantFullPath="C:\arduino-1.0\hardware\arduino\variants\standard" />
+    </Platform>
+  </Program>
+</VisualMicro>

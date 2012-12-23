@@ -39,7 +39,7 @@ const byte LCD_BACKLIGHT = 9;		// To conserve energy the lcd will light up om re
 const byte BRIGHTNESS = 50;			// We dont need full brightness for the LCD
 const byte BUTTON = 14;				// Swtch on
 const byte CHIP_SELECT = 10;		// CS pin for the SD card
-const unsigned long Sample_Interval_Sec = 60;	// How many seconds between Sensor Reads
+const unsigned long Sample_Interval_Sec = 5;	// How many seconds between Sensor Reads
 
 const int DS1307_I2C_ADDRESS = 0x68;
 
@@ -54,8 +54,8 @@ float h = 0;						// The humidity will be held in this var
 float Humidex = 0;					// For Humidex
 
 int second, minute, hour, day_of_week, day_of_month, month, year, sqwe, bst_flag;  // For the DS1307
-byte serial_debug     = 1; // if "1" it switches on the debug messages to the serial port
-byte serial_show_time = 1; // If "1" it switches on time updates to the serial port
+byte serial_debug     = 1;			// if "1" it switches on the debug messages to the serial port
+byte serial_show_time = 1;			// If "1" it switches on time updates to the serial port
 
 // Uncomment whatever type of sensor that you're using!
 #define DHTTYPE DHT11				// DHT 11 
@@ -82,7 +82,7 @@ void setup() {
 	// setDateDs1307 (s , min, hrs, day of week, day, month, year, switch)
 	// Uncomment the following line and change variables to set the time...
 	// You dont need to do this more than once
-	// setDateDs1307(0, 53, 22, 1, 18, 03, 12, 1);
+	// setDateDs1307(0, 22, 21, 2, 19, 03, 12, 1);
 
 	analogWrite (LCD_BACKLIGHT , BRIGHTNESS);	// Switch on the LCD Backlight
 	Serial.println("Humidex Logger Live!");		// Welcome messages for LCD and Serial
@@ -210,6 +210,12 @@ void loop() {
 
 void write_to_SD(int _t ,int _h, int _humidex){
 	String dataString = "";
+	dataString += String(day_of_month);
+	dataString += "/";
+	dataString += String(month);
+	dataString += "/";
+	dataString += String(year);
+	dataString += " ";
 	dataString += String(hour);
 	dataString += ":";
 	dataString += String(minute);
@@ -330,5 +336,6 @@ void setDateDs1307(
 	Wire.endTransmission();          // Time sent to DS1307, this functions work is done
 	if (serial_debug == 1){          // Send a message to make sure!
 		Serial.println ("Time Sent");
+	
 	}
 }
